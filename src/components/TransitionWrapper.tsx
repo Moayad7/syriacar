@@ -11,11 +11,11 @@ const TransitionWrapper = ({ children }: TransitionWrapperProps) => {
   const [displayLocation, setDisplayLocation] = useState(location);
   const [transitionStage, setTransitionStage] = useState("fadeIn");
 
-  useEffect(() => {
-    if (location !== displayLocation) {
-      setTransitionStage("fadeOut");
-    }
-  }, [location, displayLocation]);
+  // useEffect(() => {
+  //   if (location !== displayLocation) {
+  //     setTransitionStage("fadeOut");
+  //   }
+  // }, [location, displayLocation]);
 
   const handleAnimationEnd = () => {
     if (transitionStage === "fadeOut") {
