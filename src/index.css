@@ -1,0 +1,148 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Amiri:wght@400;700&family=Cairo:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 36 33% 97%;
+    --foreground: 24 10% 10%;
+
+    --card: 36 33% 97%;
+    --card-foreground: 24 10% 10%;
+
+    --popover: 36 33% 97%;
+    --popover-foreground: 24 10% 10%;
+
+    --primary: 214 89% 52%; /* Facebook blue: #1877F2 */
+    --primary-foreground: 36 33% 97%;
+
+    --secondary: 199 89% 48%; /* Lighter blue */
+    --secondary-foreground: 36 33% 97%;
+
+    --muted: 214 10% 92%;
+    --muted-foreground: 214 8% 40%;
+
+    --accent: 214 89% 52%;
+    --accent-foreground: 36 33% 97%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 36 33% 97%;
+
+    --border: 214 8% 85%;
+    --input: 214 8% 85%;
+    --ring: 214 8% 70%;
+
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground selection:bg-syria-facebookBlue/20 selection:text-syria-facebookBlue;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Cairo', 'Amiri', sans-serif;
+    direction: rtl; /* RTL for Arabic */
+  }
+
+  html {
+    direction: rtl;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.5);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.7);
+  }
+}
+
+/* Utility classes */
+@layer components {
+  .container-custom {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .heading-1 {
+    @apply font-arabic text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-balance;
+  }
+
+  .heading-2 {
+    @apply font-arabic text-3xl md:text-4xl font-bold leading-tight tracking-tight text-balance;
+  }
+
+  .heading-3 {
+    @apply font-arabic text-2xl md:text-3xl font-semibold leading-tight text-balance;
+  }
+
+  .subtitle {
+    @apply text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl text-balance;
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center rounded-md font-medium transition-colors 
+    focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none 
+    disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 
+    h-11 px-6 py-2;
+  }
+
+  /* Glass card effect */
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md rounded-xl border border-white/20 shadow-md;
+  }
+  
+  /* Premium hover effect */
+  .premium-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  /* Subtle separator */
+  .separator {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-muted-foreground/20 to-transparent my-8;
+  }
+}
+
+/* Page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms, transform 400ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 300ms, transform 300ms;
+}
